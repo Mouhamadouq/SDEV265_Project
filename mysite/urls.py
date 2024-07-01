@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-
+    path('accounts/', include('blog.urls')),  # Make sure 'myapp' is replaced with the actual name of your app
+    path('', include('blog.urls')),  # Optional: If you want to make your app's views accessible at the root level
 ]
