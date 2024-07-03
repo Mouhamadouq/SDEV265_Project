@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedTeam Blog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><a href="/">RedTeam Blog</a></h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 RedTeam Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

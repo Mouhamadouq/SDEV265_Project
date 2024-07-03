@@ -11,6 +11,10 @@ def post_list(request):
     }
     return render(request, 'blog/post_list.html', context)
 
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
