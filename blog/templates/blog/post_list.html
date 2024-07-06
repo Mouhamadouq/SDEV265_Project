@@ -2,12 +2,8 @@
 
 {% block content %}
     {% load static %}
-<link rel="stylesheet" href="{% static 'css/post_list.css' %}">
-</head>
-<body>
-    <div class="header">
-        
-    </div>
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
+
     <div class="container">
         <div class="sidebar">
             <h2>Profile</h2>
@@ -15,18 +11,19 @@
         </div>
         <div class="content">
             {% for post in posts %}
-            <div class="post">
-                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.text }}</p>
-                <div class="votes">
-                    <span>Upvotes: {{ post.upvotes_count }}</span>
-                    <span>Downvotes: {{ post.downvotes_count }}</span>
+                <div class="post">
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <p>{{ post.text }}</p>
+                    <div class="votes">
+                        <span>Upvotes: {{ post.upvotes.count }}</span>
+                        <span>Downvotes: {{ post.downvotes.count }}</span>
+                    </div>
+                    <div class="vote-buttons">
+                        <a href="{% url 'upvote_post' post.id %}" class="btn upvote-btn">Upvote</a>
+                        <a href="{% url 'downvote_post' post.id %}" class="btn downvote-btn">Downvote</a>
+                    </div>
                 </div>
-                <div class="vote-buttons">
-                    <a href="{% url 'upvote_post' post.id %}" class="btn upvote-btn">Upvote</a>
-                    <a href="{% url 'downvote_post' post.id %}" class="btn downvote-btn">Downvote</a>
-                </div>
-            </div>
             {% endfor %}
-  {% endblock %}
+        </div>
+    </div>
+{% endblock %}

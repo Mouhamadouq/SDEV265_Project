@@ -1,15 +1,17 @@
-﻿<!DOCTYPE html>
+﻿{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RedTeam Blog</title>
-    {% load static %}
+  
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="container">
+            <a href="{% url 'post_new' %}" class="top-menu">{% include './icons/file-earmark-plus.svg' %}</a>
             <h1><a href="/">RedTeam Blog</a></h1>
         </div>
     </header>
