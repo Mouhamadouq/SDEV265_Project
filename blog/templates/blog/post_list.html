@@ -1,9 +1,16 @@
-{% extends 'blog/base.html' %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedTeam Blog</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
-
+</head>
+<body>
+    <div class="header">
+        <h1>RedTeam Blog</h1>
+    </div>
     <div class="container">
         <div class="sidebar">
             <h2>Profile</h2>
@@ -11,19 +18,23 @@
         </div>
         <div class="content">
             {% for post in posts %}
-                <div class="post">
-                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                    <p>{{ post.text }}</p>
-                    <div class="votes">
-                        <span>Upvotes: {{ post.upvotes.count }}</span>
-                        <span>Downvotes: {{ post.downvotes.count }}</span>
-                    </div>
-                    <div class="vote-buttons">
-                        <a href="{% url 'upvote_post' post.id %}" class="btn upvote-btn">Upvote</a>
-                        <a href="{% url 'downvote_post' post.id %}" class="btn downvote-btn">Downvote</a>
-                    </div>
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.text }}</p>
+                <div class="votes">
+                    <span>Upvotes: {{ post.upvotes_count }}</span>
+                    <span>Downvotes: {{ post.downvotes_count }}</span>
                 </div>
+                <div class="vote-buttons">
+                    <a href="{% url 'upvote_post' post.id %}" class="btn upvote-btn">Upvote</a>
+                    <a href="{% url 'downvote_post' post.id %}" class="btn downvote-btn">Downvote</a>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
-{% endblock %}
+    <div class="footer">
+        <p>&copy; 2024 RedTeam Inc. All rights reserved.</p>
+    </div>
+</body>
+</html>
